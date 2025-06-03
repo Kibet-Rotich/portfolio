@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asbel Kibet Rotich | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: #f1f1f1;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3 {
+      color: #ffffff;
+    }
+    .section {
+      padding: 60px 20px;
+    }
+    .btn-custom {
+      background-color: #0d6efd;
+      color: #fff;
+      border-radius: 30px;
+      padding: 10px 20px;
+    }
+    .btn-custom:hover {
+      background-color: #0b5ed7;
+    }
+    .project-card {
+        background-color: #1f1f1f;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease;
+        padding: 20px;
+        border-left: 4px solid #0d6efd;
+
+    }
+    .project-card:hover {
+        transform: translateY(-5px);
+    }
+    .project-card h5, .project-card p, .project-card a {
+        color: #e0e0e0;
+    }
+
+    a {
+      color: #0d6efd;
+    }
+    a:hover {
+      color: #0a58ca;
+    }
+    .hero-img {
+      max-width: 200px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="text-center section">
+    <img src="CAPACITYCONFRERENCEKUPICS-405c.jpg" alt="Asbel Kibet Rotich" class="hero-img" />
+    <h1>Asbel Kibet Rotich</h1>
+    <h4>Data Scientist | Backend Developer</h4>
+    <p>Tech Leader | Machine Learning Enthusiast | Passionate About Africa’s Digital Transformation</p>
+    <div class="mt-3">
+      <a href="https://www.linkedin.com/in/rotichkibet/" class="btn btn-custom me-2" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Kibet-Rotich" class="btn btn-custom me-2" target="_blank">GitHub</a>
+      <a href="https://docs.google.com/document/d/1GHFeOlRge1pIWT5vNp9wUURYlMutR2I8vk5tCkvLrJQ/edit?usp=sharing" class="btn btn-custom" target="_blank">View CV</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section container">
+    <h2>About Me</h2>
+    <p>
+      Versatile and impact-driven software engineer with a strong foundation in machine learning, data science, and backend development. Proven ability to deliver scalable, production-grade ML systems and RESTful APIs using Django, Flask, and modern ML libraries. Passionate about using technology to drive development in Africa and mentoring the next generation of tech talent.
+    </p>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section container">
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Languages:</strong> Python, JavaScript, SQL, C++</li>
+      <li><strong>Backend:</strong> Django, Flask, DRF, FastAPI</li>
+      <li><strong>AI/ML:</strong> TensorFlow, PyTorch, OpenCV, YOLOv8, Scikit-learn, NLP</li>
+      <li><strong>Data Analysis:</strong> Pandas, NumPy, Seaborn, Matplotlib</li>
+      <li><strong>Web:</strong> HTML, CSS, JavaScript, RESTful APIs</li>
+      <li><strong>Databases:</strong> PostgreSQL, MySQL, SQLite, MongoDB</li>
+      <li><strong>Tools:</strong> Jupyter, Git, Postman, CI/CD</li>
+    </ul>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section container">
+    <h2>Projects</h2>
+    <div class="row g-4">
+
+      <div class="col-md-6">
+        <div class="card project-card p-3">
+          <h5>Banana Ripeness Classification & Value Addition</h5>
+          <p>Built a computer vision model achieving 98% accuracy in ripeness detection. Integrated a modular Django backend with a knowledge base for value-added banana products.</p>
+          <p><strong>Tech:</strong> TensorFlow, OpenCV, Django, PostgreSQL</p>
+          <a href="https://github.com/Kibet-Rotich/NDIZIAI" target="_blank">View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card project-card p-3">
+          <h5>Spam Email Classification API</h5>
+          <p>Developed a Flask REST API using TF-IDF and a Random Forest model to detect spam messages with 92% accuracy.</p>
+          <p><strong>Tech:</strong> Flask, scikit-learn, NLTK</p>
+          <a href="https://github.com/Kibet-Rotich/Data-analysis-ML-AI/tree/master/spam%20classification" target="_blank">View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card project-card p-3">
+          <h5>Enron Email Importance Classifier</h5>
+          <p>Built a custom ML pipeline to classify email priority using TF-IDF, NLTK, and spaCy. Included sentiment and NER analysis.</p>
+          <p><strong>Tech:</strong> Flask, scikit-learn, NLTK, spaCy</p>
+          <a href="https://github.com/Kibet-Rotich/Data-analysis-ML-AI/tree/master/email_priority_api" target="_blank">View on GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="section container">
+    <h2>Leadership & Experience</h2>
+    <ul>
+      <li><strong>Organizing Secretary – ELP Tech Hub:</strong> Led tech events and workshops, increasing attendance by 25%.</li>
+      <li><strong>Mentor – Data Analysis:</strong> Guided 3 mentees in Python, SQL, visualization, and project development.</li>
+      <li><strong>ML Series Coordinator:</strong> Designed and delivered 6-part ML series with 30+ consistent learners.</li>
+    </ul>
+  </section>
+
+  <!-- Education Section -->
+  <section class="section container">
+    <h2>Education</h2>
+    <p>
+      <strong>BSc. Computer Science</strong><br />
+      Jomo Kenyatta University of Agriculture and Technology (JKUAT)<br />
+      <em>Expected Graduation: 2026</em><br />
+      Relevant Courses: Machine Learning, NLP, Data Structures, Web Dev
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section container text-center">
+    <h2>Contact</h2>
+    <p><strong>Email:</strong> <a href="mailto:rotichkibetasbel@gmail.com">rotichkibetasbel@gmail.com</a></p>
+    <p><strong>Location:</strong> Nairobi, Kenya</p>
+    <p>
+      <a href="https://www.linkedin.com/in/rotichkibet/" target="_blank">LinkedIn</a> |
+      <a href="https://github.com/Kibet-Rotich" target="_blank">GitHub</a> |
+      <a href="https://docs.google.com/document/d/1GHFeOlRge1pIWT5vNp9wUURYlMutR2I8vk5tCkvLrJQ/edit?usp=sharing" target="_blank">Download CV</a>
+    </p>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
