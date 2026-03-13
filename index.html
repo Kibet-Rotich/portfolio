@@ -3,60 +3,84 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rotich Kibet — AI/ML Tutoring & Portfolio</title>
+    <title>Rotich Kibet — ML & Software Engineering Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        :root{
-            --bg: #0b0b0f; /* Very dark blue/black */
-            --card: #15151a; /* Slightly lighter for card backgrounds */
+        :root {
+            --bg: #0b0b0f;
+            --card: #15151a;
             --muted: #b0b0b0;
-            --accent: #5effc4; /* Neon Cyan/Green */
-            --accent-2: #3a7ced; /* Blue/Purple for gradient */
-            --glass: rgba(255, 255, 255, 0.05);
-            --radius: 10px;
+            --accent: #5effc4;
+            --accent-2: #3a7ced;
+            --radius: 12px;
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
         }
-        body{
-            margin:0;
+
+        body {
+            margin: 0;
             background: var(--bg);
             color: #f0f0f0;
             min-height: 100vh;
             scroll-behavior: smooth;
         }
-        .section{
-            padding: 60px 0;
+
+        .section {
+            padding: 64px 0;
             max-width: 1100px;
             margin: 0 auto;
         }
-        /* --- Custom Styles --- */
-        .logo-neon{ font-family:'Orbitron', sans-serif; font-weight:700; letter-spacing:0.8px; color:#fff; }
-        .hero-title{ font-family:'Orbitron', sans-serif; font-size:2.5rem; margin:0; color:#fff }
-        .hero-title span{ color:var(--accent); }
 
-        /* Card and Button Styling */
-        .custom-card{
+        .logo-neon {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            color: #fff;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.4rem;
+            margin: 0;
+            color: #fff;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .text-accent {
+            color: var(--accent) !important;
+        }
+
+        .text-muted-custom {
+            color: var(--muted) !important;
+        }
+
+        .custom-card {
             background-color: var(--card);
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: var(--radius);
-            transition: all 0.3s ease;
-        }
-        .custom-card:hover{
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(94, 255, 196, 0.05);
+            transition: all 0.25s ease;
         }
 
-        .btn-accent{
+        .custom-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(94, 255, 196, 0.06);
+        }
+
+        .btn-accent {
             background: linear-gradient(90deg, var(--accent), var(--accent-2));
             color: #0b0b0b;
             border-radius: 999px;
             padding: 10px 20px;
             border: none;
-            font-weight: 600;
+            font-weight: 700;
         }
-        .btn-outline-accent{
+
+        .btn-outline-accent {
             border: 1px solid var(--accent);
             color: var(--accent);
             border-radius: 999px;
@@ -65,296 +89,357 @@
             font-weight: 600;
         }
 
-        /* Pricing Area */
-        .price-large{ font-weight:700; font-size:2rem; color:#fff }
-        .price-large small{ font-size: 50%; color: var(--muted); font-weight: 400; }
-        .price-detail{ color:var(--muted); font-size:0.85rem; }
-        
-        /* FIX: Removed background from pricing/contact sections to remove white overlay */
-        .bg-dark-solid {
-            background-color: var(--bg) !important; 
-        }
-
-        /* Project Card - Revised CSS for image containment */
-        .project-card-custom {
+        .project-card {
             height: 100%;
             background: var(--card);
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: var(--radius);
-            overflow: hidden; /* Important for containing elements within the border radius */
+            overflow: hidden;
         }
+
         .project-thumb {
             width: 100%;
-            height: 180px; /* Gives the image a fixed height */
-            overflow: hidden; /* Ensures nothing overflows this area */
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
+
         .project-thumb img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Stretches the image to cover the thumb area */
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: block; /* Helps with layout consistency */
+            object-fit: cover;
+            display: block;
         }
-        .project-body { padding: 15px; }
 
-        /* Utility */
-        .text-accent{ color:var(--accent) !important; }
-        .text-muted-custom{ color:var(--muted) !important; }
+        .project-thumb-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(94, 255, 196, 0.12), rgba(58, 124, 237, 0.12));
+            color: #d9fff1;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .project-thumb-placeholder i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .project-body {
+            padding: 18px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(94, 255, 196, 0.12);
+            color: var(--accent);
+            font-size: 0.78rem;
+            margin: 3px 5px 3px 0;
+            border: 1px solid rgba(94, 255, 196, 0.2);
+        }
     </style>
 </head>
 <body>
 
-    <div class="top-cta sticky-top bg-dark border-bottom border-secondary-subtle" style="z-index:1050; backdrop-filter: blur(8px);" role="navigation" aria-label="Quick shortcuts">
-        <div class="container section p-0 d-flex align-items-center justify-content-between">
-            <div style="font-size:14px; color:var(--muted)">Available for Tutoring • Nairobi / Remote</div>
-            <div class="d-flex gap-2">
-                <a href="#pricing" class="btn shortcut-btn">Services</a>
-                <a href="https://calendly.com/asbelkibetrotich/30min" target="_blank" class="btn shortcut-btn">Book</a>
-                <a href="#contact" class="btn shortcut-btn">Contact</a>
-                <a class="shortcut-btn text-decoration-none" href="https://github.com/Kibet-Rotich" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-        </div>
-    </div>
-    
-    <nav class="navbar navbar-expand-lg navbar-dark" style="padding: 10px 0; --bs-bg-opacity: .95; backdrop-filter: blur(8px);" aria-label="Main navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-secondary-subtle" style="padding: 10px 0; --bs-bg-opacity: .95; backdrop-filter: blur(8px);" aria-label="Main navigation">
         <div class="container section p-0">
             <a class="navbar-brand" href="#home"><span class="logo-neon">ROTICH<span class="text-accent">.</span>K</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#tutoring">Subjects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#teaching">Teaching</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <header id="home" class="section hero" role="banner">
+
+    <header id="home" class="section" role="banner">
         <div class="container">
             <div class="row align-items-center g-5">
-                <div class="col-lg-7">
-                    <h1 class="hero-title mb-3">Rotich Kibet — <br><span>AI/ML</span> Tutoring & Mentorship</h1>
-                    <p class="lead text-muted-custom mb-4">Personalised 1:1 tutoring in <strong>Python, Data Analysis, and Machine Learning</strong>. Practical projects, clear paths, and a trackable progress plan — built for learners who want results fast.</p>
-
-                    <div class="d-flex flex-wrap gap-2 mb-4">
-                        <a href="https://calendly.com/asbelkibetrotich/30min" target="_blank" class="btn btn-accent me-2">Book a Free Intro Call <i class="bi bi-arrow-right-short"></i></a>
-                        <a href="#pricing" class="btn btn-outline-accent">See Programs & Pricing</a>
-                    </div>
-
-                    <div class="row g-3 text-start">
-                        <div class="col-sm-6"><p class="mb-0 text-muted-custom"><i class="bi bi-check-circle-fill text-accent me-2"></i> <b>8 Focused Sessions</b> per program</p></div>
-                        <div class="col-sm-6"><p class="mb-0 text-muted-custom"><i class="bi bi-check-circle-fill text-accent me-2"></i> <b>Flexible Pace</b> (2-4 weeks)</p></div>
-                        <div class="col-sm-6"><p class="mb-0 text-muted-custom"><i class="bi bi-check-circle-fill text-accent me-2"></i> <b>Real-World Projects</b> & Demos</p></div>
-                        <div class="col-sm-6"><p class="mb-0 text-muted-custom"><i class="bi bi-check-circle-fill text-accent me-2"></i> <b>Online & Nairobi</b> (Remote first)</p></div>
+                <div class="col-lg-8">
+                    <h1 class="hero-title mb-3">Rotich Kibet — <span>ML + Software Engineering</span></h1>
+                    <p class="lead text-muted-custom mb-3">I build machine learning systems and software with a strong focus on low-level programming. Most of my current work revolves around <strong>C</strong> and <strong>C++</strong>, with Python used for integration and experimentation.</p>
+                    <p class="text-muted-custom mb-4">This site is a living record of projects I have built and those I am actively developing.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="#projects" class="btn btn-accent">View Projects</a>
+                        <a href="https://drive.google.com/file/d/1HB4KCyo_kBo-3lEefBIbSqNrTyCS1NzW/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline-accent">Find My CV <i class="bi bi-file-earmark-person"></i></a>
+                        <a href="https://github.com/Kibet-Rotich" target="_blank" rel="noopener noreferrer" class="btn btn-outline-accent">GitHub <i class="bi bi-github"></i></a>
                     </div>
                 </div>
-
-                <div class="col-lg-5 text-center d-none d-lg-block">
-                    <img src="images/hero.jpg" alt="Rotich Kibet Profile" class="rounded-circle p-1 shadow" style="width: 250px; height: 250px; object-fit: cover; border: 4px solid var(--accent);" />
-                    <p class="mt-3 text-muted-custom">AI/ML Engineer | Tutor | Backend Dev</p>
+                <div class="col-lg-4 text-center d-none d-lg-block">
+                    <img src="images/hero.jpg" alt="Rotich Kibet Profile" class="rounded-circle p-1 shadow" style="width: 230px; height: 230px; object-fit: cover; border: 4px solid var(--accent);" />
+                    <p class="mt-3 text-muted-custom">Low-Level Engineer • ML Builder</p>
                 </div>
             </div>
         </div>
     </header>
 
-
-    <section id="tutoring" class="section" aria-labelledby="tutoring-heading">
+    <section id="about" class="section" aria-labelledby="about-heading">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 id="tutoring-heading">🎯 What I Teach</h2>
-                <p class="lead text-muted-custom">Focused subjects designed to move you from concept to confident application.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="custom-card p-4 h-100 text-center">
-                        <i class="bi bi-code-slash text-accent" style="font-size: 3rem;"></i>
-                        <h4 class="mt-3 mb-2">Python Core</h4>
-                        <p class="text-muted-custom">Focus on clean syntax, idiomatic Python, algorithmic thinking, and setting up development environments.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="custom-card p-4 h-100 text-center">
-                        <i class="bi bi-bar-chart-fill text-accent" style="font-size: 3rem;"></i>
-                        <h4 class="mt-3 mb-2">Data Stack Mastery</h4>
-                        <p class="text-muted-custom">Deep dives into <b>Pandas</b>, data transformation, statistical review, and creating informative visualizations with Matplotlib/Seaborn.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="custom-card p-4 h-100 text-center">
-                        <i class="bi bi-cpu-fill text-accent" style="font-size: 3rem;"></i>
-                        <h4 class="mt-3 mb-2">Machine Learning</h4>
-                        <p class="text-muted-custom">Theory, practical application using Scikit-learn, model evaluation, and introduction to PyTorch/TensorFlow concepts.</p>
-                    </div>
-                </div>
+            <div class="custom-card p-4 p-md-5">
+                <h2 id="about-heading" class="mb-3">About Me</h2>
+                <p class="text-muted-custom mb-2">I work across machine learning and software engineering, and I am especially passionate about systems close to the metal. That direction is what I am pursuing most right now, so my projects mainly involve C and C++.</p>
+                <p class="text-muted-custom mb-0">I enjoy combining practical model-building with strong engineering fundamentals to produce software that is fast, reliable, and understandable.</p>
             </div>
         </div>
     </section>
 
-    
-
-    <section id="pricing" class="section bg-dark-solid p-0" aria-labelledby="pricing-heading">
-        <div class="container py-5">
-            <div class="text-center mb-5">
-                <h2 id="pricing-heading">💰 Investment & Packages</h2>
-                <p class="lead text-muted-custom">All packages are <b>8 sessions</b> long. Select your program below.</p>
-            </div>
-
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-6 col-lg-4">
-                    <div class="custom-card p-4 h-100">
-                        <h4 class="text-accent mb-3"><i class="bi bi-code-slash me-2"></i> Python Fundamentals</h4>
-                        <p class="text-muted-custom">Beginners & up — syntax, data structures, and problem solving.</p>
-                        <hr class="border-secondary-subtle">
-                        <div class="price-large">KES 500 <small>/ session</small></div>
-                        <div class="price-detail mb-3">Total: KES 4,000</div>
-                        <a href="https://calendly.com/asbelkibetrotich/30min?a=Python" target="_blank" class="btn btn-accent w-100">Book Python</a>
-                    </div>
+    <section id="skills" class="section" aria-labelledby="skills-heading">
+        <div class="container">
+            <div class="custom-card p-4 p-md-5">
+                <h2 id="skills-heading" class="mb-4">Skills</h2>
+                <div class="mb-3">
+                    <h6 class="text-white mb-2">Languages</h6>
+                    <span class="tag">C</span><span class="tag">C++</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">JavaScript</span>
                 </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="custom-card p-4 h-100" style="border-color: var(--accent);">
-                        <h4 class="text-accent mb-3"><i class="bi bi-bar-chart-fill me-2"></i> Data Analysis & Viz</h4>
-                        <p class="text-muted-custom">Master <b>Pandas</b>, cleaning, statistical analysis, and compelling data visualization.</p>
-                        <hr class="border-secondary-subtle">
-                        <div class="price-large">KES 700 <small>/ session</small></div>
-                        <div class="price-detail mb-3">Total: KES 5,600</div>
-                        <a href="https://calendly.com/asbelkibetrotich/30min?a=Data" target="_blank" class="btn btn-accent w-100">Book Data Analysis</a>
-                    </div>
+                <div class="mb-3">
+                    <h6 class="text-white mb-2">Machine Learning & AI</h6>
+                    <span class="tag">Computer Vision</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Scikit-learn</span><span class="tag">Transformers</span>
                 </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="custom-card p-4 h-100">
-                        <h4 class="text-accent mb-3"><i class="bi bi-robot me-2"></i> Machine Learning</h4>
-                        <p class="text-muted-custom">Foundational ML to Deep Learning: CNNs, model evaluation, and deployment concepts.</p>
-                        <hr class="border-secondary-subtle">
-                        <div class="price-large">KES 1,000 <small>/ session</small></div>
-                        <div class="price-detail mb-3">Total: KES 8,000</div>
-                        <a href="https://calendly.com/asbelkibetrotich/30min?a=ML" target="_blank" class="btn btn-accent w-100">Book ML Program</a>
-                    </div>
+                <div class="mb-3">
+                    <h6 class="text-white mb-2">Systems & Engineering</h6>
+                    <span class="tag">Memory Management</span><span class="tag">POSIX APIs</span><span class="tag">Network Programming</span><span class="tag">Data Structures</span><span class="tag">System Design</span>
+                </div>
+                <div>
+                    <h6 class="text-white mb-2">Tools & Data</h6>
+                    <span class="tag">FastAPI</span><span class="tag">Django</span><span class="tag">Docker</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Git</span>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="projects" class="section" aria-labelledby="projects-heading">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 id="projects-heading">🧠 Selected Projects & Demos</h2>
-            <p class="lead text-muted-custom">Teaching focused projects to demonstrate practical application of concepts.</p>
-        </div>
-        
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4">
-                <article class="project-card-custom h-100">
-                    <div class="project-thumb">
-                        <img src="images/banana-thumb.png" alt="Banana Ripeness Classifier" loading="lazy" />
-                    </div>
-                    <div class="project-body">
-                        <h5 class="text-white">Banana Ripeness Classifier</h5>
-                        <p class="text-muted-custom mb-3">A practical image classification demo used to teach <b>Convolutional Neural Networks (CNNs)</b> and deployment principles.</p>
-                        <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/NDIZIAI" target="_blank" rel="noopener noreferrer">View Repo <i class="bi bi-github"></i></a>
-                    </div>
-                </article>
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 id="projects-heading">Selected Projects</h2>
+                <p class="lead text-muted-custom">Built and in-progress work across ML and low-level engineering.</p>
             </div>
-            
-            <div class="col-md-6 col-lg-4">
-                <article class="project-card-custom h-100">
-                    <div class="project-thumb">
-                        <img src="images/cenocade-thumb.png" alt="Cenocade — Premium Beef Tallow" loading="lazy" />
-                    </div>
-                    <div class="project-body">
-                        <h5 class="text-white">Cenocade — E‑commerce Store</h5>
-                        <p class="text-muted-custom mb-3">E‑commerce site for Cenocade Enterprises showcasing premium beef tallow products with product catalog, cart and orders pages.</p>
-                        <a class="btn btn-sm btn-outline-accent" href="https://cenocade-frontend.onrender.com/" target="_blank" rel="noopener noreferrer">Live Site <i class="bi bi-box-arrow-up-right"></i></a>
-                    </div>
-                </article>
-            </div>
-            
-            <div class="col-md-6 col-lg-4">
-                <article class="project-card-custom h-100">
-                    <div class="project-thumb">
-                        <img src="images/mnist-thumb.png" alt="MNIST Teaching Pipelines" loading="lazy" />
-                    </div>
-                    <div class="project-body">
-                        <h5 class="text-white">MNIST Teaching Pipelines</h5>
-                        <p class="text-muted-custom mb-3">Introductory pipelines for basic image recognition, used as a fundamental exercise in <b>Deep Learning workshops</b>.</p>
-                        <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/MNIST" target="_blank" rel="noopener noreferrer">View Repo <i class="bi bi-github"></i></a>
-                    </div>
-                </article>
-            </div>
-            
-            <div class="col-md-6 col-lg-4">
-                <article class="project-card-custom h-100">
-                    <div class="project-thumb">
-                        <img src="images/churn-thumb.png" alt="Customer Churn Predictor" loading="lazy" />
-                    </div>
-                    <div class="project-body">
-                        <h5 class="text-white">Customer Churn Predictor</h5>
-                        <p class="text-muted-custom mb-3">A supervised learning project focused on <b>Data Preprocessing</b> and building/evaluating classification models.</p>
-                        <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich" target="_blank" rel="noopener noreferrer">View Profile <i class="bi bi-github"></i></a>
-                    </div>
-                </article>
-            </div>
-        </div>
-        <div class="text-center mt-5">
-            <a class="btn btn-outline-accent" href="https://github.com/Kibet-Rotich" target="_blank" rel="noopener noreferrer">View All Projects on GitHub <i class="bi bi-github"></i></a>
-        </div>
-    </div>
-</section>
 
-
-    <section id="contact" class="section bg-dark-solid p-0" aria-labelledby="contact-heading">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-6">
-                    <h2 id="contact-heading" class="mb-4">Get In Touch <i class="bi bi-chat-left-text-fill text-accent"></i></h2>
-                    <p class="lead text-muted-custom">Have a specific question about a program, a customized corporate training need, or just want to chat about AI?</p>
-                    
-                    <div class="d-flex flex-column gap-3 mt-4">
-                        <div>
-                            <p class="mb-1 text-white fw-bold">Email</p>
-                            <a href="mailto:rotichkibetasbel@gmail.com" class="text-accent text-decoration-none">rotichkibetasbel@gmail.com</a>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <article class="project-card h-100">
+                        <div class="project-thumb">
+                            <div class="project-thumb-placeholder">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
                         </div>
-                        <div>
-                            <p class="mb-1 text-white fw-bold">Schedule a Call</p>
-                            <a href="https://calendly.com/asbelkibetrotich/30min" target="_blank" class="btn btn-accent btn-sm">Book a Free Intro Call <i class="bi bi-calendar-event"></i></a>
+                        <div class="project-body">
+                            <h5 class="text-white">Linear Regression in C + Python Integration</h5>
+                            <p class="text-muted-custom mb-3">Regression model implemented in C and integrated with Python for easier experimentation and usage.</p>
+                            <span class="tag">C</span><span class="tag">Python</span><span class="tag">ML</span>
+                            <div class="mt-3">
+                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/C-Learning/tree/master/Linear%20regression" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
+                            </div>
                         </div>
-                        <div>
-                            <p class="mb-1 text-white fw-bold">Download CV</p>
-                            <a href="https://drive.google.com/file/d/1HB4KCyo_kBo-3lEefBIbSqNrTyCS1NzW/view?usp=sharing" target="_blank" class="btn btn-outline-accent btn-sm">View Curriculum Vitae <i class="bi bi-file-earmark-person"></i></a>
-                        </div>
-                    </div>
+                    </article>
                 </div>
 
-                <div class="col-lg-6">
-                    <div class="custom-card p-4">
-                        <h4 class="mb-3">Send a Message</h4>
-                        <form action="https://formspree.io/f/xblppqpr" method="POST" accept-charset="utf-8">
-                            <div class="mb-3">
-                                <label for="name" class="form-label text-muted-custom">Name</label>
-                                <input type="text" class="form-control bg-dark text-white border-secondary" id="name" name="name" required>
+                <div class="col-md-6 col-lg-4">
+                    <article class="project-card h-100">
+                        <div class="project-thumb">
+                            <div class="project-thumb-placeholder">
+                                <i class="bi bi-terminal-fill"></i>
                             </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label text-muted-custom">Email</label>
-                                <input type="email" class="form-control bg-dark text-white border-secondary" id="email" name="email" required>
+                        </div>
+                        <div class="project-body">
+                            <h5 class="text-white">Linux Shell in C++</h5>
+                            <p class="text-muted-custom mb-3">Custom shell that handles Linux commands and supports output redirection using <code>&gt;</code>. Piping is planned next.</p>
+                            <span class="tag">C++</span><span class="tag">Systems</span><span class="tag">CLI</span>
+                            <div class="mt-3">
+                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/Shell-using-C-" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
                             </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label text-muted-custom">Message</label>
-                                <textarea class="form-control bg-dark text-white border-secondary" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="project-card h-100">
+                        <div class="project-thumb">
+                            <div class="project-thumb-placeholder">
+                                <i class="bi bi-database-fill-gear"></i>
                             </div>
-                            <button type="submit" class="btn btn-accent w-100">Send Message</button>
-                        </form>
+                        </div>
+                        <div class="project-body">
+                            <h5 class="text-white">Key-Value Store</h5>
+                            <p class="text-muted-custom mb-3">Low-level data storage project focused on performance, memory handling, and core systems design.</p>
+                            <span class="tag">C/C++</span><span class="tag">Storage</span><span class="tag">Engineering</span>
+                            <div class="mt-3">
+                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/key-value-store" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="project-card h-100">
+                        <div class="project-thumb">
+                            <img src="images/banana-thumb.png" alt="Banana Ripeness Classifier thumbnail" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-thumb-placeholder" style="display: none;">
+                                <i class="bi bi-image"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h5 class="text-white">NDIZIAI — Banana Ripeness Classifier</h5>
+                            <p class="text-muted-custom mb-3">Computer vision tool for classifying banana ripeness and recommending the best value-addition technique.</p>
+                            <span class="tag">Computer Vision</span><span class="tag">Python</span><span class="tag">Django</span>
+                            <div class="mt-3">
+                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/NDIZIAI" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="project-card h-100">
+                        <div class="project-thumb">
+                            <img src="images/zaodoc-thumb.jpeg" alt="CropDoc thumbnail" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-thumb-placeholder" style="display: none;">
+                                <i class="bi bi-image"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h5 class="text-white">CropDoc (Zaodoc)</h5>
+                            <p class="text-muted-custom mb-3">Maize disease detection project built for early crop diagnosis from images.</p>
+                            <span class="tag">Computer Vision</span><span class="tag">Python</span><span class="tag">Agritech</span>
+                            <div class="mt-3">
+                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/cropdoc" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="project-card h-100">
+                        <div class="project-thumb">
+                            <img src="images/cenocade-thumb.png" alt="Cenocade website thumbnail" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-thumb-placeholder" style="display: none;">
+                                <i class="bi bi-image"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h5 class="text-white">Cenocade — E-commerce Website</h5>
+                            <p class="text-muted-custom mb-3">Company website for selling beef tallow products, with storefront and product browsing flow.</p>
+                            <span class="tag">Web</span><span class="tag">Frontend</span><span class="tag">E-commerce</span>
+                            <div class="mt-3">
+                                <a class="btn btn-sm btn-outline-accent" href="https://cenocade-frontend.onrender.com/" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="project-card h-100">
+                        <div class="project-thumb">
+                            <img src="images/ogiek-thumb.png" alt="Language Doc App thumbnail" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-thumb-placeholder" style="display: none;">
+                                <i class="bi bi-image"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h5 class="text-white">Language Doc App (Ogiek)</h5>
+                            <p class="text-muted-custom mb-3">App for recording voices and storing transcripts to support language documentation for the Ogiek community.</p>
+                            <span class="tag">FastAPI</span><span class="tag">JavaScript</span><span class="tag">Audio + Text</span>
+                            <div class="mt-3">
+                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/language-doc-app" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="project-card h-100">
+                        <div class="project-thumb">
+                            <img src="images/mnist-thumb.png" alt="MNIST thumbnail" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-thumb-placeholder" style="display: none;">
+                                <i class="bi bi-image"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h5 class="text-white">MNIST Digit Recognition</h5>
+                            <p class="text-muted-custom mb-3">Model for recognizing handwritten digits using the MNIST dataset.</p>
+                            <span class="tag">Deep Learning</span><span class="tag">Python</span><span class="tag">Classification</span>
+                            <div class="mt-3">
+                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/MNIST" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="project-card h-100">
+                        <div class="project-thumb">
+                            <img src="images/pneumonia-thumb.jpeg" alt="Pneumonia detection thumbnail" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-thumb-placeholder" style="display: none;">
+                                <i class="bi bi-image"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h5 class="text-white">Pneumonia Detection</h5>
+                            <p class="text-muted-custom mb-3">Medical image classification project for pneumonia detection.</p>
+                            <span class="tag">Computer Vision</span><span class="tag">Python</span><span class="tag">Healthcare ML</span>
+                            <div class="mt-3">
+                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/pneumonia-detection" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="teaching" class="section" aria-labelledby="teaching-heading">
+        <div class="container">
+            <div class="custom-card p-4 p-md-5">
+                <h2 id="teaching-heading" class="mb-3">Teaching</h2>
+                <p class="text-muted-custom mb-0">I teach data science, machine learning, programming in C, and data structures using Python and C++.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section" aria-labelledby="contact-heading">
+        <div class="container">
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-7">
+                    <div class="custom-card p-4 h-100">
+                        <h2 id="contact-heading" class="mb-3">Contact</h2>
+                        <p class="text-muted-custom mb-4">Open to collaborations, engineering conversations, and project discussions.</p>
+                        <p class="mb-2"><strong>Email:</strong> <a href="mailto:rotichkibetasbel@gmail.com" class="text-accent text-decoration-none">rotichkibetasbel@gmail.com</a></p>
+                        <p class="mb-2"><strong>GitHub:</strong> <a href="https://github.com/Kibet-Rotich" target="_blank" rel="noopener noreferrer" class="text-accent text-decoration-none">github.com/Kibet-Rotich</a></p>
+                        <p class="mb-0"><strong>Find My CV:</strong> <a href="https://drive.google.com/file/d/1HB4KCyo_kBo-3lEefBIbSqNrTyCS1NzW/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-accent text-decoration-none">View CV</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="custom-card p-4 h-100 d-flex flex-column justify-content-center">
+                        <h5 class="mb-3">Current Focus</h5>
+                        <p class="text-muted-custom mb-2">Building low-level systems in C/C++</p>
+                        <p class="text-muted-custom mb-2">Integrating ML prototypes with production-minded code</p>
+                        <p class="text-muted-custom mb-0">Growing practical computer vision workflows</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <footer class="footer border-top border-secondary-subtle" style="background-color: var(--bg);">
+
+    <footer class="footer border-top border-secondary-subtle">
         <div class="container py-4 text-center">
-            <p class="mb-0 text-muted-custom">&copy; 2025 Rotich Kibet — AI/ML Tutoring & Portfolio</p>
+            <p class="mb-0 text-muted-custom">&copy; 2026 Rotich Kibet — ML & Software Engineering Portfolio</p>
         </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+</body>
 </html>

@@ -1,0 +1,15 @@
+https://github.com/Kibet-Rotich/key-value-store
+https://github.com/Kibet-Rotich/Shell-using-C-
+https://github.com/Kibet-Rotich/C-Learning/tree/master/Linear%20regression
+https://github.com/Kibet-Rotich/NDIZIAI
+https://github.com/Kibet-Rotich/cropdoc
+https://cenocade-frontend.onrender.com/
+https://github.com/Kibet-Rotich/language-doc-app
+https://github.com/Kibet-Rotich/MNIST
+https://github.com/Kibet-Rotich/pneumonia-detection
+https://github.com/Kibet-Rotich/cropdoc
+https://github.com/Kibet-Rotich/NDIZIAI
+https://cenocade-frontend.onrender.com/
+https://github.com/Kibet-Rotich/language-doc-app
+https://github.com/Kibet-Rotich/MNIST
+https://github.com/Kibet-Rotich/pneumonia-detection
