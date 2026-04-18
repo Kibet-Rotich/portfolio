@@ -3,106 +3,340 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rotich Kibet — ML & Software Engineering Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <title>Rotich Kibet - Systems + ML Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
         :root {
-            --bg: #0b0b0f;
-            --card: #15151a;
-            --muted: #b0b0b0;
-            --accent: #5effc4;
-            --accent-2: #3a7ced;
-            --radius: 12px;
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            --bg: #f7f8fb;
+            --bg-alt: #ffffff;
+            --ink: #101322;
+            --muted: #5f6478;
+            --line: #dfe5f1;
+            --accent: #0f56f4;
+            --accent-2: #00c2a8;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --max: 1160px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
-            background: var(--bg);
-            color: #f0f0f0;
+            color: var(--ink);
+            font-family: "Manrope", "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at 88% 12%, rgba(15, 86, 244, 0.14), transparent 36%),
+                radial-gradient(circle at 15% 4%, rgba(0, 194, 168, 0.12), transparent 30%),
+                linear-gradient(180deg, #fbfcff 0%, #f2f5fb 52%, #fbfcff 100%);
             min-height: 100vh;
-            scroll-behavior: smooth;
         }
 
-        .section {
-            padding: 64px 0;
-            max-width: 1100px;
+        .shell {
+            position: relative;
+            overflow: clip;
+        }
+
+        .section-wrap {
+            max-width: var(--max);
             margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .logo-neon {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            letter-spacing: 0.8px;
-            color: #fff;
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1050;
+            backdrop-filter: blur(12px);
+            background: rgba(247, 248, 251, 0.86);
+            border-bottom: 1px solid rgba(16, 19, 34, 0.08);
+        }
+
+        .brand {
+            font-family: "Syne", sans-serif;
+            font-size: 1.15rem;
+            letter-spacing: 0.02em;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .brand-dot {
+            color: var(--accent);
+        }
+
+        .nav-link {
+            color: #25304e !important;
+            font-weight: 600;
+            opacity: 0.85;
+        }
+
+        .nav-link:hover,
+        .nav-link:focus {
+            opacity: 1;
+        }
+
+        .hero {
+            padding: 88px 0 70px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(16, 19, 34, 0.12);
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 0.82rem;
+            color: #304068;
+            letter-spacing: 0.01em;
+            margin-bottom: 18px;
         }
 
         .hero-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.4rem;
-            margin: 0;
-            color: #fff;
+            font-family: "Syne", sans-serif;
+            font-size: clamp(2rem, 6vw, 4.6rem);
+            line-height: 0.98;
+            letter-spacing: -0.02em;
+            margin: 0 0 18px;
+            max-width: 12ch;
         }
 
-        .hero-title span {
-            color: var(--accent);
+        .hero-title .grad {
+            color: transparent;
+            background: linear-gradient(110deg, var(--accent), #3b80ff 45%, var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
         }
 
-        .text-accent {
-            color: var(--accent) !important;
+        .hero-copy {
+            max-width: 62ch;
+            color: var(--muted);
+            font-size: 1.06rem;
+            line-height: 1.72;
         }
 
-        .text-muted-custom {
-            color: var(--muted) !important;
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
         }
 
-        .custom-card {
-            background-color: var(--card);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: var(--radius);
-            transition: all 0.25s ease;
-        }
-
-        .custom-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(94, 255, 196, 0.06);
-        }
-
-        .btn-accent {
-            background: linear-gradient(90deg, var(--accent), var(--accent-2));
-            color: #0b0b0b;
+        .btn-core {
+            border: 1px solid transparent;
             border-radius: 999px;
-            padding: 10px 20px;
-            border: none;
+            padding: 12px 20px;
+            font-size: 0.96rem;
             font-weight: 700;
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
-        .btn-outline-accent {
-            border: 1px solid var(--accent);
-            color: var(--accent);
+        .btn-primary-core {
+            color: #fff;
+            background: linear-gradient(115deg, #0f56f4 0%, #2166ff 48%, #00bca3 100%);
+            box-shadow: 0 10px 26px rgba(15, 86, 244, 0.25);
+        }
+
+        .btn-primary-core:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 34px rgba(15, 86, 244, 0.34);
+        }
+
+        .btn-secondary-core {
+            color: var(--ink);
+            border-color: rgba(16, 19, 34, 0.18);
+            background: rgba(255, 255, 255, 0.78);
+        }
+
+        .btn-secondary-core:hover {
+            transform: translateY(-2px);
+            border-color: rgba(16, 19, 34, 0.35);
+        }
+
+        .hero-card {
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(16, 19, 34, 0.1);
+            background: linear-gradient(155deg, #ffffff 0%, #eef3ff 100%);
+            padding: 22px;
+            box-shadow: 0 18px 40px rgba(16, 19, 34, 0.09);
+            height: 100%;
+        }
+
+        .hero-card img {
+            width: 100%;
+            border-radius: 18px;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+        }
+
+        .hero-meta {
+            margin-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            color: #2f3a5d;
+            font-size: 0.9rem;
+        }
+
+        .kpi-grid {
+            margin-top: 24px;
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .kpi {
+            border-radius: 14px;
+            border: 1px solid rgba(16, 19, 34, 0.1);
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.75);
+        }
+
+        .kpi strong {
+            display: block;
+            font-size: 1.08rem;
+        }
+
+        .kpi span {
+            color: var(--muted);
+            font-size: 0.78rem;
+            letter-spacing: 0.02em;
+        }
+
+        .section-block {
+            padding: 34px 0 78px;
+        }
+
+        .section-head {
+            margin-bottom: 26px;
+        }
+
+        .section-label {
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #4b6bc2;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: "Syne", sans-serif;
+            font-size: clamp(1.4rem, 3vw, 2.4rem);
+            margin: 0;
+        }
+
+        .section-copy {
+            margin-top: 10px;
+            color: var(--muted);
+            max-width: 66ch;
+        }
+
+        .lane-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .lane-card {
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(16, 19, 34, 0.11);
+            background: linear-gradient(145deg, #ffffff, #f3f6ff);
+            padding: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 140px;
+        }
+
+        .lane-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 28px rgba(25, 43, 94, 0.11);
+        }
+
+        .lane-num {
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            color: #5678d9;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .lane-card h3 {
+            margin: 0 0 8px;
+            font-size: 1.05rem;
+        }
+
+        .lane-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .about-slab,
+        .skills-slab,
+        .contact-slab {
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(16, 19, 34, 0.1);
+            background: var(--bg-alt);
+            padding: 28px;
+            box-shadow: 0 16px 34px rgba(16, 19, 34, 0.08);
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            margin: 6px 6px 0 0;
             border-radius: 999px;
-            padding: 10px 20px;
-            background: transparent;
+            border: 1px solid rgba(16, 19, 34, 0.14);
+            background: #f5f8ff;
+            color: #29355d;
+            padding: 6px 12px;
+            font-size: 0.82rem;
             font-weight: 600;
         }
 
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
         .project-card {
-            height: 100%;
-            background: var(--card);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: var(--radius);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(16, 19, 34, 0.1);
+            background: #ffffff;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 24px rgba(16, 19, 34, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 34px rgba(16, 19, 34, 0.12);
         }
 
         .project-thumb {
-            width: 100%;
             height: 180px;
             position: relative;
             overflow: hidden;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background: linear-gradient(135deg, #eaf0ff, #edf9f7);
+            border-bottom: 1px solid var(--line);
         }
 
         .project-thumb img {
@@ -120,325 +354,422 @@
             justify-content: center;
             flex-direction: column;
             gap: 10px;
-            background: linear-gradient(135deg, rgba(94, 255, 196, 0.12), rgba(58, 124, 237, 0.12));
-            color: #d9fff1;
+            color: #3050a3;
             text-align: center;
             padding: 20px;
         }
 
         .project-thumb-placeholder i {
-            font-size: 2rem;
-            color: var(--accent);
+            font-size: 1.6rem;
         }
 
         .project-body {
             padding: 18px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
-        .tag {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: rgba(94, 255, 196, 0.12);
-            color: var(--accent);
-            font-size: 0.78rem;
-            margin: 3px 5px 3px 0;
-            border: 1px solid rgba(94, 255, 196, 0.2);
+        .project-body h3 {
+            font-size: 1.02rem;
+            margin: 0 0 10px;
+        }
+
+        .project-body p {
+            margin: 0 0 12px;
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.58;
+            flex: 1;
+        }
+
+        .project-tags {
+            margin-bottom: 12px;
+        }
+
+        .project-link {
+            color: #1e4ecb;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            width: fit-content;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .teach-list p {
+            margin-bottom: 8px;
+            color: var(--muted);
+        }
+
+        .footer {
+            border-top: 1px solid rgba(16, 19, 34, 0.08);
+            padding: 22px 0;
+            color: #5e6476;
+            font-size: 0.9rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            animation: rise 700ms ease forwards;
+        }
+
+        .d1 { animation-delay: 80ms; }
+        .d2 { animation-delay: 180ms; }
+        .d3 { animation-delay: 280ms; }
+        .d4 { animation-delay: 380ms; }
+
+        @keyframes rise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 991px) {
+            .hero {
+                padding-top: 60px;
+            }
+
+            .project-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .lane-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-title {
+                max-width: 100%;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-block {
+                padding-bottom: 56px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-secondary-subtle" style="padding: 10px 0; --bs-bg-opacity: .95; backdrop-filter: blur(8px);" aria-label="Main navigation">
-        <div class="container section p-0">
-            <a class="navbar-brand" href="#home"><span class="logo-neon">ROTICH<span class="text-accent">.</span>K</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navmenu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#teaching">Teaching</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
+    <div class="shell">
+        <nav class="navbar navbar-expand-lg top-nav" aria-label="Main navigation">
+            <div class="container section-wrap py-2 px-3 px-sm-0">
+                <a class="brand" href="#home">ROTICH<span class="brand-dot">.</span>K</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navmenu">
+                    <ul class="navbar-nav ms-auto gap-lg-2">
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#teaching">Teaching</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <header id="home" class="section" role="banner">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-8">
-                    <h1 class="hero-title mb-3">Rotich Kibet — <span>ML + Software Engineering</span></h1>
-                    <p class="lead text-muted-custom mb-3">I build machine learning systems and software with a strong focus on low-level programming. Most of my current work revolves around <strong>C</strong> and <strong>C++</strong>, with Python used for integration and experimentation.</p>
-                    <p class="text-muted-custom mb-4">This site is a living record of projects I have built and those I am actively developing.</p>
-                    <div class="d-flex flex-wrap gap-2">
-                        <a href="#projects" class="btn btn-accent">View Projects</a>
-                        <a href="https://drive.google.com/file/d/1HB4KCyo_kBo-3lEefBIbSqNrTyCS1NzW/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline-accent">Find My CV <i class="bi bi-file-earmark-person"></i></a>
-                        <a href="https://github.com/Kibet-Rotich" target="_blank" rel="noopener noreferrer" class="btn btn-outline-accent">GitHub <i class="bi bi-github"></i></a>
+        <header id="home" class="hero">
+            <div class="section-wrap">
+                <div class="row g-4 align-items-stretch">
+                    <div class="col-lg-7 d-flex flex-column justify-content-center">
+                        <div class="eyebrow reveal d1"><i class="bi bi-activity"></i> Systems engineering meets machine learning</div>
+                        <h1 class="hero-title reveal d2">I build <span class="grad">robust software systems</span> and practical AI products.</h1>
+                        <p class="hero-copy reveal d3">I am Rotich Kibet. I work at the intersection of low-level engineering and applied machine learning, focusing on fast, dependable solutions built with C, C++, and Python.</p>
+                        <div class="cta-row reveal d4">
+                            <a href="#projects" class="btn-core btn-primary-core">Explore Projects</a>
+                            <a href="https://drive.google.com/file/d/1HB4KCyo_kBo-3lEefBIbSqNrTyCS1NzW/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-core btn-secondary-core">View CV</a>
+                            <a href="https://github.com/Kibet-Rotich" target="_blank" rel="noopener noreferrer" class="btn-core btn-secondary-core">GitHub</a>
+                        </div>
+                        <div class="kpi-grid reveal d4">
+                            <div class="kpi"><strong>C / C++</strong><span>Core systems stack</span></div>
+                            <div class="kpi"><strong>ML + CV</strong><span>Production-minded modeling</span></div>
+                            <div class="kpi"><strong>Teaching</strong><span>Data science and programming</span></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <aside class="hero-card reveal d3" aria-label="Profile card">
+                            <img src="images/hero.jpg" alt="Rotich Kibet profile image" loading="lazy">
+                            <div class="hero-meta">
+                                <strong>Rotich Kibet</strong>
+                                <span>Software engineer</span>
+                            </div>
+                            <div class="hero-meta">
+                                <span>Nairobi, Kenya</span>
+                                <span>Open to collaborations</span>
+                            </div>
+                        </aside>
                     </div>
                 </div>
-                <div class="col-lg-4 text-center d-none d-lg-block">
-                    <img src="images/hero.jpg" alt="Rotich Kibet Profile" class="rounded-circle p-1 shadow" style="width: 230px; height: 230px; object-fit: cover; border: 4px solid var(--accent);" />
-                    <p class="mt-3 text-muted-custom">Low-Level Engineer • ML Builder</p>
+            </div>
+        </header>
+
+        <section class="section-block" aria-labelledby="focus-heading">
+            <div class="section-wrap">
+                <div class="section-head reveal d1">
+                    <span class="section-label">How I Work</span>
+                    <h2 id="focus-heading" class="section-title">Designed for real-world software delivery</h2>
+                    <p class="section-copy">A workflow inspired by product platforms: clear architecture, measurable outcomes, and practical iteration from prototype to production.</p>
+                </div>
+                <div class="lane-grid">
+                    <article class="lane-card reveal d1">
+                        <div class="lane-num">01</div>
+                        <h3>Systems-first architecture</h3>
+                        <p>Performance, memory discipline, and predictable behavior are built into the design from day one.</p>
+                    </article>
+                    <article class="lane-card reveal d2">
+                        <div class="lane-num">02</div>
+                        <h3>Fast model experimentation</h3>
+                        <p>Python-based prototypes are kept practical and connected to deployment goals early.</p>
+                    </article>
+                    <article class="lane-card reveal d2">
+                        <div class="lane-num">03</div>
+                        <h3>Production-safe integrations</h3>
+                        <p>ML components are integrated into reliable software interfaces with strong observability.</p>
+                    </article>
+                    <article class="lane-card reveal d3">
+                        <div class="lane-num">04</div>
+                        <h3>Explainable engineering choices</h3>
+                        <p>Tradeoffs are documented clearly so teams can maintain and scale solutions confidently.</p>
+                    </article>
+                    <article class="lane-card reveal d3">
+                        <div class="lane-num">05</div>
+                        <h3>Iterative improvement loops</h3>
+                        <p>Each release cycle feeds metrics and feedback back into model and system revisions.</p>
+                    </article>
+                    <article class="lane-card reveal d4">
+                        <div class="lane-num">06</div>
+                        <h3>Teaching as force multiplier</h3>
+                        <p>I share methods through teaching so teams and students can apply them independently.</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </header>
+        </section>
 
-    <section id="about" class="section" aria-labelledby="about-heading">
-        <div class="container">
-            <div class="custom-card p-4 p-md-5">
-                <h2 id="about-heading" class="mb-3">About Me</h2>
-                <p class="text-muted-custom mb-2">I work across machine learning and software engineering, and I am especially passionate about systems close to the metal. That direction is what I am pursuing most right now, so my projects mainly involve C and C++.</p>
-                <p class="text-muted-custom mb-0">I enjoy combining practical model-building with strong engineering fundamentals to produce software that is fast, reliable, and understandable.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="section" aria-labelledby="skills-heading">
-        <div class="container">
-            <div class="custom-card p-4 p-md-5">
-                <h2 id="skills-heading" class="mb-4">Skills</h2>
-                <div class="mb-3">
-                    <h6 class="text-white mb-2">Languages</h6>
-                    <span class="tag">C</span><span class="tag">C++</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">JavaScript</span>
-                </div>
-                <div class="mb-3">
-                    <h6 class="text-white mb-2">Machine Learning & AI</h6>
-                    <span class="tag">Computer Vision</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Scikit-learn</span><span class="tag">Transformers</span>
-                </div>
-                <div class="mb-3">
-                    <h6 class="text-white mb-2">Systems & Engineering</h6>
-                    <span class="tag">Memory Management</span><span class="tag">POSIX APIs</span><span class="tag">Network Programming</span><span class="tag">Data Structures</span><span class="tag">System Design</span>
-                </div>
-                <div>
-                    <h6 class="text-white mb-2">Tools & Data</h6>
-                    <span class="tag">FastAPI</span><span class="tag">Django</span><span class="tag">Docker</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Git</span>
+        <section id="about" class="section-block" aria-labelledby="about-heading">
+            <div class="section-wrap">
+                <div class="about-slab reveal d1">
+                    <span class="section-label">About</span>
+                    <h2 id="about-heading" class="section-title">Engineering close to the metal, with product impact in mind</h2>
+                    <p class="section-copy mb-0">I build software across machine learning and systems engineering. My current focus is low-level development in C and C++, supported by Python for experimentation and integration. I care about clean architecture, maintainable implementation, and solutions that perform under real workloads.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects" class="section" aria-labelledby="projects-heading">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 id="projects-heading">Selected Projects</h2>
-                <p class="lead text-muted-custom">Built and in-progress work across ML and low-level engineering.</p>
+        <section id="skills" class="section-block" aria-labelledby="skills-heading">
+            <div class="section-wrap">
+                <div class="skills-slab reveal d1">
+                    <span class="section-label">Capabilities</span>
+                    <h2 id="skills-heading" class="section-title">Tools and domains</h2>
+                    <div class="mt-3">
+                        <h3 class="h6 fw-bold mt-3 mb-2">Languages</h3>
+                        <span class="chip">C</span><span class="chip">C++</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">JavaScript</span>
+                    </div>
+                    <div>
+                        <h3 class="h6 fw-bold mt-4 mb-2">Machine Learning and AI</h3>
+                        <span class="chip">Computer Vision</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">Scikit-learn</span><span class="chip">Transformers</span>
+                    </div>
+                    <div>
+                        <h3 class="h6 fw-bold mt-4 mb-2">Systems and Engineering</h3>
+                        <span class="chip">Memory Management</span><span class="chip">POSIX APIs</span><span class="chip">Network Programming</span><span class="chip">Data Structures</span><span class="chip">System Design</span>
+                    </div>
+                    <div>
+                        <h3 class="h6 fw-bold mt-4 mb-2">Tools and Data</h3>
+                        <span class="chip">FastAPI</span><span class="chip">Django</span><span class="chip">Docker</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Git</span>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <article class="project-card h-100">
+        <section id="projects" class="section-block" aria-labelledby="projects-heading">
+            <div class="section-wrap">
+                <div class="section-head reveal d1">
+                    <span class="section-label">Portfolio</span>
+                    <h2 id="projects-heading" class="section-title">Selected projects</h2>
+                    <p class="section-copy">Built and in-progress work across ML, software engineering, and low-level systems.</p>
+                </div>
+
+                <div class="project-grid">
+                    <article class="project-card reveal d1">
                         <div class="project-thumb">
                             <div class="project-thumb-placeholder">
                                 <i class="bi bi-graph-up-arrow"></i>
                             </div>
                         </div>
                         <div class="project-body">
-                            <h5 class="text-white">Linear Regression in C + Python Integration</h5>
-                            <p class="text-muted-custom mb-3">Regression model implemented in C and integrated with Python for easier experimentation and usage.</p>
-                            <span class="tag">C</span><span class="tag">Python</span><span class="tag">ML</span>
-                            <div class="mt-3">
-                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/C-Learning/tree/master/Linear%20regression" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
-                            </div>
+                            <h3>Linear Regression in C + Python Integration</h3>
+                            <p>Regression model implemented in C and integrated with Python for easier experimentation and usage.</p>
+                            <div class="project-tags"><span class="chip">C</span><span class="chip">Python</span><span class="chip">ML</span></div>
+                            <a class="project-link" href="https://github.com/Kibet-Rotich/C-Learning/tree/master/Linear%20regression" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-arrow-up-right"></i></a>
                         </div>
                     </article>
-                </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <article class="project-card h-100">
+                    <article class="project-card reveal d1">
                         <div class="project-thumb">
                             <div class="project-thumb-placeholder">
                                 <i class="bi bi-terminal-fill"></i>
                             </div>
                         </div>
                         <div class="project-body">
-                            <h5 class="text-white">Linux Shell in C++</h5>
-                            <p class="text-muted-custom mb-3">Custom shell that handles Linux commands and supports output redirection using <code>&gt;</code>. Piping is planned next.</p>
-                            <span class="tag">C++</span><span class="tag">Systems</span><span class="tag">CLI</span>
-                            <div class="mt-3">
-                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/Shell-using-C-" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
-                            </div>
+                            <h3>Linux Shell in C++</h3>
+                            <p>Custom shell that handles Linux commands and supports output redirection using &gt;. Piping is planned next.</p>
+                            <div class="project-tags"><span class="chip">C++</span><span class="chip">Systems</span><span class="chip">CLI</span></div>
+                            <a class="project-link" href="https://github.com/Kibet-Rotich/Shell-using-C-" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-arrow-up-right"></i></a>
                         </div>
                     </article>
-                </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <article class="project-card h-100">
+                    <article class="project-card reveal d2">
                         <div class="project-thumb">
                             <div class="project-thumb-placeholder">
                                 <i class="bi bi-database-fill-gear"></i>
                             </div>
                         </div>
                         <div class="project-body">
-                            <h5 class="text-white">Key-Value Store</h5>
-                            <p class="text-muted-custom mb-3">Low-level data storage project focused on performance, memory handling, and core systems design.</p>
-                            <span class="tag">C/C++</span><span class="tag">Storage</span><span class="tag">Engineering</span>
-                            <div class="mt-3">
-                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/key-value-store" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
-                            </div>
+                            <h3>Key-Value Store</h3>
+                            <p>Low-level data storage project focused on performance, memory handling, and core systems design.</p>
+                            <div class="project-tags"><span class="chip">C/C++</span><span class="chip">Storage</span><span class="chip">Engineering</span></div>
+                            <a class="project-link" href="https://github.com/Kibet-Rotich/key-value-store" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-arrow-up-right"></i></a>
                         </div>
                     </article>
-                </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <article class="project-card h-100">
+                    <article class="project-card reveal d2">
                         <div class="project-thumb">
-                            <img src="images/banana-thumb.png" alt="Banana Ripeness Classifier thumbnail" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-thumb-placeholder" style="display: none;">
-                                <i class="bi bi-image"></i>
-                            </div>
+                            <img src="images/banana-thumb.png" alt="Banana ripeness classifier thumbnail" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-thumb-placeholder" style="display: none;"><i class="bi bi-image"></i></div>
                         </div>
                         <div class="project-body">
-                            <h5 class="text-white">NDIZIAI — Banana Ripeness Classifier</h5>
-                            <p class="text-muted-custom mb-3">Computer vision tool for classifying banana ripeness and recommending the best value-addition technique.</p>
-                            <span class="tag">Computer Vision</span><span class="tag">Python</span><span class="tag">Django</span>
-                            <div class="mt-3">
-                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/NDIZIAI" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
-                            </div>
+                            <h3>NDIZIAI - Banana Ripeness Classifier</h3>
+                            <p>Computer vision tool for classifying banana ripeness and recommending the best value-addition technique.</p>
+                            <div class="project-tags"><span class="chip">Computer Vision</span><span class="chip">Python</span><span class="chip">Django</span></div>
+                            <a class="project-link" href="https://github.com/Kibet-Rotich/NDIZIAI" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-arrow-up-right"></i></a>
                         </div>
                     </article>
-                </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <article class="project-card h-100">
+                    <article class="project-card reveal d2">
                         <div class="project-thumb">
                             <img src="images/zaodoc-thumb.jpeg" alt="CropDoc thumbnail" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-thumb-placeholder" style="display: none;">
-                                <i class="bi bi-image"></i>
-                            </div>
+                            <div class="project-thumb-placeholder" style="display: none;"><i class="bi bi-image"></i></div>
                         </div>
                         <div class="project-body">
-                            <h5 class="text-white">CropDoc (Zaodoc)</h5>
-                            <p class="text-muted-custom mb-3">Maize disease detection project built for early crop diagnosis from images.</p>
-                            <span class="tag">Computer Vision</span><span class="tag">Python</span><span class="tag">Agritech</span>
-                            <div class="mt-3">
-                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/cropdoc" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
-                            </div>
+                            <h3>CropDoc (Zaodoc)</h3>
+                            <p>Maize disease detection project built for early crop diagnosis from images.</p>
+                            <div class="project-tags"><span class="chip">Computer Vision</span><span class="chip">Python</span><span class="chip">Agritech</span></div>
+                            <a class="project-link" href="https://github.com/Kibet-Rotich/cropdoc" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-arrow-up-right"></i></a>
                         </div>
                     </article>
-                </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <article class="project-card h-100">
+                    <article class="project-card reveal d3">
                         <div class="project-thumb">
                             <img src="images/cenocade-thumb.png" alt="Cenocade website thumbnail" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-thumb-placeholder" style="display: none;">
-                                <i class="bi bi-image"></i>
-                            </div>
+                            <div class="project-thumb-placeholder" style="display: none;"><i class="bi bi-image"></i></div>
                         </div>
                         <div class="project-body">
-                            <h5 class="text-white">Cenocade — E-commerce Website</h5>
-                            <p class="text-muted-custom mb-3">Company website for selling beef tallow products, with storefront and product browsing flow.</p>
-                            <span class="tag">Web</span><span class="tag">Frontend</span><span class="tag">E-commerce</span>
-                            <div class="mt-3">
-                                <a class="btn btn-sm btn-outline-accent" href="https://cenocade-frontend.onrender.com/" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
-                            </div>
+                            <h3>Cenocade - E-commerce Website</h3>
+                            <p>Company website for selling beef tallow products, with storefront and product browsing flow.</p>
+                            <div class="project-tags"><span class="chip">Web</span><span class="chip">Frontend</span><span class="chip">E-commerce</span></div>
+                            <a class="project-link" href="https://cenocade-frontend.onrender.com/" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-arrow-up-right"></i></a>
                         </div>
                     </article>
-                </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <article class="project-card h-100">
+                    <article class="project-card reveal d3">
                         <div class="project-thumb">
                             <img src="images/ogiek-thumb.png" alt="Language Doc App thumbnail" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-thumb-placeholder" style="display: none;">
-                                <i class="bi bi-image"></i>
-                            </div>
+                            <div class="project-thumb-placeholder" style="display: none;"><i class="bi bi-image"></i></div>
                         </div>
                         <div class="project-body">
-                            <h5 class="text-white">Language Doc App (Ogiek)</h5>
-                            <p class="text-muted-custom mb-3">App for recording voices and storing transcripts to support language documentation for the Ogiek community.</p>
-                            <span class="tag">FastAPI</span><span class="tag">JavaScript</span><span class="tag">Audio + Text</span>
-                            <div class="mt-3">
-                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/language-doc-app" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
-                            </div>
+                            <h3>Language Doc App (Ogiek)</h3>
+                            <p>App for recording voices and storing transcripts to support language documentation for the Ogiek community.</p>
+                            <div class="project-tags"><span class="chip">FastAPI</span><span class="chip">JavaScript</span><span class="chip">Audio + Text</span></div>
+                            <a class="project-link" href="https://github.com/Kibet-Rotich/language-doc-app" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-arrow-up-right"></i></a>
                         </div>
                     </article>
-                </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <article class="project-card h-100">
+                    <article class="project-card reveal d3">
                         <div class="project-thumb">
                             <img src="images/mnist-thumb.png" alt="MNIST thumbnail" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-thumb-placeholder" style="display: none;">
-                                <i class="bi bi-image"></i>
-                            </div>
+                            <div class="project-thumb-placeholder" style="display: none;"><i class="bi bi-image"></i></div>
                         </div>
                         <div class="project-body">
-                            <h5 class="text-white">MNIST Digit Recognition</h5>
-                            <p class="text-muted-custom mb-3">Model for recognizing handwritten digits using the MNIST dataset.</p>
-                            <span class="tag">Deep Learning</span><span class="tag">Python</span><span class="tag">Classification</span>
-                            <div class="mt-3">
-                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/MNIST" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
-                            </div>
+                            <h3>MNIST Digit Recognition</h3>
+                            <p>Model for recognizing handwritten digits using the MNIST dataset.</p>
+                            <div class="project-tags"><span class="chip">Deep Learning</span><span class="chip">Python</span><span class="chip">Classification</span></div>
+                            <a class="project-link" href="https://github.com/Kibet-Rotich/MNIST" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-arrow-up-right"></i></a>
                         </div>
                     </article>
-                </div>
 
-                <div class="col-md-6 col-lg-4">
-                    <article class="project-card h-100">
+                    <article class="project-card reveal d4">
                         <div class="project-thumb">
                             <img src="images/pneumonia-thumb.jpeg" alt="Pneumonia detection thumbnail" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="project-thumb-placeholder" style="display: none;">
-                                <i class="bi bi-image"></i>
-                            </div>
+                            <div class="project-thumb-placeholder" style="display: none;"><i class="bi bi-image"></i></div>
                         </div>
                         <div class="project-body">
-                            <h5 class="text-white">Pneumonia Detection</h5>
-                            <p class="text-muted-custom mb-3">Medical image classification project for pneumonia detection.</p>
-                            <span class="tag">Computer Vision</span><span class="tag">Python</span><span class="tag">Healthcare ML</span>
-                            <div class="mt-3">
-                                <a class="btn btn-sm btn-outline-accent" href="https://github.com/Kibet-Rotich/pneumonia-detection" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-box-arrow-up-right"></i></a>
-                            </div>
+                            <h3>Pneumonia Detection</h3>
+                            <p>Medical image classification project for pneumonia detection.</p>
+                            <div class="project-tags"><span class="chip">Computer Vision</span><span class="chip">Python</span><span class="chip">Healthcare ML</span></div>
+                            <a class="project-link" href="https://github.com/Kibet-Rotich/pneumonia-detection" target="_blank" rel="noopener noreferrer">View Project <i class="bi bi-arrow-up-right"></i></a>
                         </div>
                     </article>
                 </div>
-
-                
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="teaching" class="section" aria-labelledby="teaching-heading">
-        <div class="container">
-            <div class="custom-card p-4 p-md-5">
-                <h2 id="teaching-heading" class="mb-3">Teaching</h2>
-                <p class="text-muted-custom mb-0">I teach data science, machine learning, programming in C, and data structures using Python and C++.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section" aria-labelledby="contact-heading">
-        <div class="container">
-            <div class="row g-4 align-items-stretch">
-                <div class="col-lg-7">
-                    <div class="custom-card p-4 h-100">
-                        <h2 id="contact-heading" class="mb-3">Contact</h2>
-                        <p class="text-muted-custom mb-4">Open to collaborations, engineering conversations, and project discussions.</p>
-                        <p class="mb-2"><strong>Email:</strong> <a href="mailto:rotichkibetasbel@gmail.com" class="text-accent text-decoration-none">rotichkibetasbel@gmail.com</a></p>
-                        <p class="mb-2"><strong>GitHub:</strong> <a href="https://github.com/Kibet-Rotich" target="_blank" rel="noopener noreferrer" class="text-accent text-decoration-none">github.com/Kibet-Rotich</a></p>
-                        <p class="mb-0"><strong>Find My CV:</strong> <a href="https://drive.google.com/file/d/1HB4KCyo_kBo-3lEefBIbSqNrTyCS1NzW/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-accent text-decoration-none">View CV</a></p>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="custom-card p-4 h-100 d-flex flex-column justify-content-center">
-                        <h5 class="mb-3">Current Focus</h5>
-                        <p class="text-muted-custom mb-2">Building low-level systems in C/C++</p>
-                        <p class="text-muted-custom mb-2">Integrating ML prototypes with production-minded code</p>
-                        <p class="text-muted-custom mb-0">Growing practical computer vision workflows</p>
-                    </div>
+        <section id="teaching" class="section-block" aria-labelledby="teaching-heading">
+            <div class="section-wrap">
+                <div class="about-slab reveal d1 teach-list">
+                    <span class="section-label">Teaching</span>
+                    <h2 id="teaching-heading" class="section-title">What I teach</h2>
+                    <p>Data science and machine learning for practical product use cases.</p>
+                    <p>Programming in C and foundational systems thinking.</p>
+                    <p class="mb-0">Data structures with Python and C++ implementation strategies.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="footer border-top border-secondary-subtle">
-        <div class="container py-4 text-center">
-            <p class="mb-0 text-muted-custom">&copy; 2026 Rotich Kibet — ML & Software Engineering Portfolio</p>
-        </div>
-    </footer>
+        <section id="contact" class="section-block" aria-labelledby="contact-heading">
+            <div class="section-wrap">
+                <div class="row g-3 g-lg-4 align-items-stretch">
+                    <div class="col-lg-7">
+                        <div class="contact-slab reveal d2 h-100">
+                            <span class="section-label">Contact</span>
+                            <h2 id="contact-heading" class="section-title mb-3">Open to collaboration and engineering conversations</h2>
+                            <p class="section-copy">If you are working on systems software, ML tooling, or product-facing AI, let us connect.</p>
+                            <p class="mb-2"><strong>Email:</strong> <a href="mailto:rotichkibetasbel@gmail.com">rotichkibetasbel@gmail.com</a></p>
+                            <p class="mb-2"><strong>GitHub:</strong> <a href="https://github.com/Kibet-Rotich" target="_blank" rel="noopener noreferrer">github.com/Kibet-Rotich</a></p>
+                            <p class="mb-0"><strong>CV:</strong> <a href="https://drive.google.com/file/d/1HB4KCyo_kBo-3lEefBIbSqNrTyCS1NzW/view?usp=sharing" target="_blank" rel="noopener noreferrer">View my CV</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="contact-slab reveal d3 h-100">
+                            <span class="section-label">Current Focus</span>
+                            <h2 class="section-title mb-3">2026 priorities</h2>
+                            <p class="mb-2">Building low-level systems in C/C++ with pragmatic interfaces.</p>
+                            <p class="mb-2">Integrating ML prototypes into stable production workflows.</p>
+                            <p class="mb-0">Expanding practical computer vision systems for local impact.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="section-wrap text-center">
+                <p class="mb-0">Copyright 2026 Rotich Kibet - Systems and Machine Learning Portfolio</p>
+            </div>
+        </footer>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
